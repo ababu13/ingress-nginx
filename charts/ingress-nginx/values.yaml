@@ -795,6 +795,14 @@ controller:
       # requests:
       #   cpu: 10m
       #   memory: 20Mi
+      volumeMounts: []
+      ## VolumeMounts to the AdmissionWebhook createSecret Job.
+      #  - name: copy-portal-skins
+      #   mountPath: /var/lib/lemonldap-ng/portal/skins
+      volumes: []
+      ## Volumes to the AdmissionWebhook createSecret Job.
+      #  - name: copy-portal-skins
+      #    emptyDir: {}
     patchWebhookJob:
       name: patch
       # -- Deadline in seconds for the job to complete. Must be greater than 0 to enforce. If unset or 0, no deadline is enforced.
@@ -852,6 +860,15 @@ controller:
         name: ""
         # -- Auto-mount service account token or not
         automountServiceAccountToken: true
+      volumeMounts: []
+      ## VolumeMounts to the AdmissionWebhook patchWebhook Job.
+      #  - name: copy-portal-skins
+      #   mountPath: /var/lib/lemonldap-ng/portal/skins
+
+      volumes: []
+      ## Volumes to the AdmissionWebhook patchWebhook Job.
+      #  - name: copy-portal-skins
+      #    emptyDir: {}
     # Use certmanager to generate webhook certs
     certManager:
       enabled: false
