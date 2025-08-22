@@ -70,9 +70,9 @@ spec:
           {{- if .Values.controller.admissionWebhooks.patchWebhookJob.resources }}
           resources: {{ toYaml .Values.controller.admissionWebhooks.patchWebhookJob.resources | nindent 12 }}
           {{- end }}
-          {{- if .Values.controller.admissionWebhooks.patchWebhookJob.volumeMounts }}
+          {{- if .Values.controller.admissionWebhooks.patchWebhookJob.patch.volumeMounts }}
           volumeMounts:
-          {{- toYaml .Values.controller.admissionWebhooks.patchWebhookJob.volumeMounts | nindent 12 }}
+          {{- toYaml .Values.controller.admissionWebhooks.patchWebhookJob.patch.volumeMounts | nindent 12 }}
           {{- end }}
       restartPolicy: OnFailure
       serviceAccountName: {{ include "ingress-nginx.admissionWebhooks.patch.serviceAccountName" . }}
@@ -86,8 +86,8 @@ spec:
     {{- if .Values.controller.admissionWebhooks.patch.securityContext }}
       securityContext: {{ toYaml .Values.controller.admissionWebhooks.patch.securityContext | nindent 8 }}
     {{- end }}
-    {{- if .Values.controller.admissionWebhooks.patchWebhookJob.volumes }}
+    {{- if .Values.controller.admissionWebhooks.patchWebhookJob.patch.volumes }}
       volumes:
-      {{- toYaml .Values.controller.admissionWebhooks.patchWebhookJob.volumes | nindent 8 }}
+      {{- toYaml .Values.controller.admissionWebhooks.patchWebhookJob.patch.volumes | nindent 8 }}
     {{- end }}
 {{- end }}
